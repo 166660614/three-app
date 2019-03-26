@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+		<h1><font color="red">个人中心</font></h1>
+		<font color="fuchsia">欢迎<span id="text"></span></font>
+		<script src="js/mui.min.js"></script>
+		 <link href="css/mui.min.css" rel="stylesheet"/>
+	</head>
+	<body>
+	</body>
+</html>
+<!--<script type="text/javascript">
+	//个人中心
+ $(function(){
+	var user_id=localStorage.getItem('user_id');
+	var uuser_name=localStorage.getItem('uuser_name');
+	//console.log(id)
+	$('#text').html(user_name);
+	var token=localStorage.getItem('token');
+	//console.log(token)
+	 $.ajax({
+	  url     :   '',
+	  type    :   'post',
+	  dataType:   'json',
+		data  :  {id:id,token:token},
+	success   :  function(res){
+					if(res.errno!=0){
+						alert('信息有误')
+					}else{
+						alert('欢迎'+u_name+'登录')
+						
+					}
+				}
+				
+			})	
+// 			//退出
+// 			$('#quit').click(function(){
+// 				localStorage.removeItem('id')
+// 				localStorage.removeItem('token')
+// 				alert('退出成功') 
+// 				window.location.href="./index.html";
+// 			})	
+			
+		})	
+</script> -->
