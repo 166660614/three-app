@@ -25,16 +25,44 @@
 				<td>操作</td>
 			</tr>
 			
-			<tr>
-				<td><a href="detail.html">苹果6S</a></td>
-				<td>120000</td>
-				<td>100</td>
-				<td>1543491553</td>
-				<td>
-					<a href="detail.html">商品详情</a>||
-					<a href="" id="del">删除</a>
-				</td>
-			</tr>
+			<tbody id="show">
+			    <tr>
+			        <td></td>
+			        <td></td>
+			        <td></td>
+			        <td></td>
+			        <td></td>
+			        <td>
+			            <a href="goodsdetail.html">详情</a>
+			        </td>
+			    </tr>
+			</tbody>
 		</table>
 	</body>
 </html>
+<script type="text/javascript">
+mui.ajax({
+	url:"http://three.52self.cn/goods/list",
+	data:{},
+	dataType:'json',//服务器返回json格式数据
+	type:'post',//HTTP请求类型
+	timeout:10000,//超时时间设置为10秒；	              
+	success:function(result){
+		//console.log(result);
+		var _tr= "";
+		for(var i in result['data']){
+		   _tr+="<tr>"
+			 +"<td>"+result['data'][i]['goods_id']+"</td>"
+			 +"<td>"+result['data'][i]['img']+"</td>"
+			 +"<td>"+result['data'][i]['goods_name']+"</td>"
+			 +"<td>"+result['data'][i]['store']+"</td>"
+			 +"<td>"+result['data'][i]['price']+"</td>"
+			 +"<td><a href='javascript:;'>详情</a></td>"
+		   +"</tr>"
+	   }
+	  
+	   $("#show").html(_tr)
+	}
+});
+</script>
+					
