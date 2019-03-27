@@ -4,14 +4,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<script src="js/mui.min.js"></script>
-		<script src="js/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 		<script src="js/app.js"></script> 
 		<link href="css/app.css" rel="stylesheet"/>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link href="css/mui.min.css" rel="stylesheet"/>
-		<script type="text/javascript">
-			
-		</script>
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav">
@@ -25,7 +22,7 @@
 				<td>商品名称</td>
 				<td>商品价格</td>
 				<td>商品库存</td>
-				<td>添加时间</td>
+				<td>上架时间</td>
 				<td>操作</td>
 			</tr>
 			
@@ -45,13 +42,6 @@
 	</body>
 	<script type="text/javascript">
 		$(function(){
-			$('.gdetail').click(function(){
-				alert('1112')
-				var _this=$('this');
-				var goods_id=_this.parents('tr').attr('goods_id');
-				localStorage.setItem('goods_id',goods_id);
-					window.location.href="./detail.html";
-			})
 			mui.ajax({
 				url:"http://three.52self.cn/goods/list",
 				dataType:'json',//服务器返回json格式数据
@@ -61,19 +51,27 @@
 					//console.log(result);
 					var _tr= "";
 					for(var i in result){
-					   _tr+="<tr goods_id="+result[i]['goods_id']+">"
+					   _tr+="<tr goods_id='"+result[i]["goods_id"]+"'>"
 						 +"<td>"+result[i]['goods_id']+"</td>"
 						 +"<td>"+result[i]['goods_name']+"</td>"
 						 +"<td>"+result[i]['goods_price']+"</td>"
 						 +"<td>"+result[i]['goods_store']+"</td>"
 						 +"<td>"+result[i]['add_time']+"</td>"
-						 +"<td><button class='gdetail btn-info'>详情</button></td>"
+						 +"<td><input type='button' value='详情' class='detail'></td>"
 					   +"</tr>"
 				   }
 				  
 				   $("#show").html(_tr)
 				}
 			});
+		})
+	</script>
+	<script type="text/javascript">
+			$(document).on('click','.detail',function(){
+				var _this=$(this);
+				var goods_id=_this.parents('tr').attr('goods_id')
+				localStorage.setItem('goods_id',goods_id);
+				window.location.href="./detail.html";
 		})
 	</script>
 </html>
