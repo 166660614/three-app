@@ -35,9 +35,9 @@
 </html>
 <script>
 $(function(){
-	
+				var user_id=localStorage.getItem('user_id');
 	 		    $.ajax({
-	 		   
+					url: 'http://three.52self.cn/user/cart',
 					type:'post',
 					data :{user_id:user_id},
 					dataType:'json',
@@ -48,7 +48,7 @@ $(function(){
 	 		      
 	 		    })
 	 		})	
-		 })
+		 
 
 
 	
