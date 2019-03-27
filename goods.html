@@ -56,7 +56,7 @@
 						 +"<td>"+result[i]['goods_name']+"</td>"
 						 +"<td>"+result[i]['goods_price']+"</td>"
 						 +"<td>"+result[i]['goods_store']+"</td>"
-						 +"<td>"+result[i]['add_time']+"</td>"
+						 +"<td>"+new Date(result[i]['add_time']).toLocaleDateString()+"</td>"
 						 +"<td><input type='button' value='详情' class='detail'></td>"
 					   +"</tr>"
 				   }
