@@ -34,7 +34,7 @@
 			        <td></td>
 			        <td></td>
 			        <td>
-			            <a href="./detail.html">详情</a>
+			            <a>详情</a>
 			        </td>
 			    </tr>
 			</tbody>
@@ -42,28 +42,38 @@
 	</body>
 </html>
 <script type="text/javascript">
-mui.ajax({
-	url:"http://three.52self.cn/goods/list",
-	data:{},
-	dataType:'json',//服务器返回json格式数据
-	type:'post',//HTTP请求类型
-	timeout:10000,//超时时间设置为10秒；	              
-	success:function(result){
-		//console.log(result);
-		var _tr= "";
-		for(var i in result){
-		   _tr+="<tr>"
-			 +"<td>"+result[i]['goods_id']+"</td>"
-			 +"<td>"+result[i]['goods_name']+"</td>"
-			 +"<td>"+result[i]['goods_price']+"</td>"
-			 +"<td>"+result[i]['goods_store']+"</td>"
-			 +"<td>"+result[i]['add_time']+"</td>"
-			 +"<td><a href='javascript:;'>详情</a></td>"
-		   +"</tr>"
-	   }
-	  
-	   $("#show").html(_tr)
-	}
-});
+	$(function(){
+		mui.ajax({
+			url:"http://three.52self.cn/goods/list",
+			data:{},
+			dataType:'json',//服务器返回json格式数据
+			type:'post',//HTTP请求类型
+			timeout:10000,//超时时间设置为10秒；	              
+			success:function(result){
+				//console.log(result);
+				var _tr= "";
+				for(var i in result){
+				   _tr+="<tr goods_id="+result[i]['goods_id']+">"
+					 +"<td>"+result[i]['goods_id']+"</td>"
+					 +"<td>"+result[i]['goods_name']+"</td>"
+					 +"<td>"+result[i]['goods_price']+"</td>"
+					 +"<td>"+result[i]['goods_store']+"</td>"
+					 +"<td>"+result[i]['add_time']+"</td>"
+					 +"<td><a class='par'>详情</a></td>"
+				   +"</tr>"
+			   }
+			  
+			   $("#show").html(_tr)
+			}
+		});
+		$('.par').click(function(){
+			alert('111')
+			var _this=$('this');
+			var goods_id=_this.parents('tr').attr('goods_id');
+			localStorage.setItem('goods_id',goods_id);
+				window.location.href="./detail.html";
+		})
+	})
+
 </script>
 					
