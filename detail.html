@@ -74,16 +74,16 @@
 		$(document).on('click','.addput',function(){
 				var _this=$('this')
 				var timestamps = (new Date()).getTime();
-				console.log(timestamps); 
+				//console.log(timestamps); 
 				var user_id=localStorage.getItem('user_id');
-				console.log(user_id);
+				//console.log(user_id);
 				$.ajax({
 					url     :   'http://three.52self.cn/collect/add',
 					type    :   'post',
 					dataType:   'json',
 					data    :  {timestamps:timestamps,user_id:user_id},
 					 success :   function(res){
-						 console.log(res.errcode);
+						 //console.log(res.errcode);
 						 if(res.errcode==4001){
 						 	alert('收藏成功')
 						 }else{
