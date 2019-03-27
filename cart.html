@@ -53,13 +53,13 @@ $(function(){
 	 		        success:function (result) {
 	 					   var _tr= "";
 	 					   		for(var i in result){
-	 					   		   _tr+="<tr>"
+	 					   		   _tr+="<tr goods_id='"+result[i]["goods_id"]+"' cart_id='"+result[i]["cart_id"]+"'>"
 	 					   			 +"<td>"+result[i]['cart_id']+"</td>"
 	 					   			 +"<td>"+result[i]['goods_name']+"</td>"
 	 					   			 +"<td>"+result[i]['goods_num']+"</td>"
 	 					   			 +"<td>"+result[i]['goods_price']+"</td>"
 									 +"<td>"+result[i]['add_time']+"</td>"
-	 					   			 +"<td><a >下单</a></td>"
+	 					   			 +"<td><a class='order'>下单</a></td>"
 	 					   		   +"</tr>"
 	 					   }
 						   $("#show").html(_tr)
@@ -67,6 +67,29 @@ $(function(){
 	 				   
 	 		      
 	 		    })
+				$(document).on('click','.order',function(){
+					var _this=$(this);
+					var user_id=localStorage.getItem('user_id');
+
+					var goods_id=_this.parents('tr').attr('goods_id');
+					//alert(goods_id)
+					var cart_id=_this.parents('tr').attr('cart_id')
+					//alert(cart_id);
+					$.ajax({
+						url : 'http://three.52self.cn/order/add',
+						type : 'post',
+						dataType : 'json',
+						data : {user_id:user_id,goods_id:goods_id,cart_id:cart_id},
+						success : function(res){
+							if(res.errcode==4001){
+								alert('下单成功1')
+								window.location.href="./order.html";
+							}else{
+							alert('下单失败')
+							}
+						}
+					})
+				})
 	 		})	
 		 
 
