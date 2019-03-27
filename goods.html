@@ -51,13 +51,13 @@ mui.ajax({
 	success:function(result){
 		//console.log(result);
 		var _tr= "";
-		for(var i in result['data']){
+		for(var i in result){
 		   _tr+="<tr>"
-			 +"<td>"+result['data'][i]['goods_id']+"</td>"
-			 +"<td>"+result['data'][i]['img']+"</td>"
-			 +"<td>"+result['data'][i]['goods_name']+"</td>"
-			 +"<td>"+result['data'][i]['store']+"</td>"
-			 +"<td>"+result['data'][i]['price']+"</td>"
+			 +"<td>"+result[i]['goods_id']+"</td>"
+			 +"<td>"+result[i]['goods_name']+"</td>"
+			 +"<td>"+result[i]['goods_price']+"</td>"
+			 +"<td>"+result[i]['goods_store']+"</td>"
+			 +"<td>"+result[i]['add_time']+"</td>"
 			 +"<td><a href='javascript:;'>详情</a></td>"
 		   +"</tr>"
 	   }

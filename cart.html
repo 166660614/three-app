@@ -14,7 +14,8 @@
 		</header>
 		<br><br><br>
 		<table border="1">
-			<tr>
+			<thead>
+				<tr>
 				<td>购物车id</td>
 				<td>商品名称</td>
 				<td>购买数量</td>
@@ -22,17 +23,21 @@
 				<td>添加时间</td>
 				<td>操作</td>
 			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>
-					<a href="">去结算</a>||
-					<a href="" id="del">删除</a>
-				</td>
-			</tr>
+			</thead>
+			<tbody id="show">
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<a href="">去结算</a>||
+						<a href="" id="del">删除</a>
+					</td>
+				</tr>	
+			</tbody>
+			
 	</body>
 </html>
 <script>
@@ -43,8 +48,19 @@ $(function(){
 					type:'post',
 					data :{user_id:user_id},
 					dataType:'json',
-	 		        success:function (res) {
-	 					   console.log(res.goods_id);
+	 		        success:function (result) {
+	 					   var _tr= "";
+	 					   		for(var i in result){
+	 					   		   _tr+="<tr>"
+	 					   			 +"<td>"+result[i]['cart_id']+"</td>"
+	 					   			 +"<td>"+result[i]['goods_name']+"</td>"
+	 					   			 +"<td>"+result[i]['goods_num']+"</td>"
+	 					   			 +"<td>"+result[i]['goods_price']+"</td>"
+									 +"<td>"+result[i]['add_time']+"</td>"
+	 					   			 +"<td><a href='javascript:;'>详情</a></td>"
+	 					   		   +"</tr>"
+	 					   }
+						   $("#show").html(_tr)
 	 				   }
 	 				   
 	 		      
