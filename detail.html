@@ -76,11 +76,12 @@
 				var timestamps = (new Date()).getTime();
 				//console.log(timestamps); //1495302061441
 				var goods_id=$('.goods_id').text();
+				var user_id=$('.user_id').text();
 				$.ajax({
 					url     :   'http://three.52self.cn/collect/add',
 					type    :   'post',
 					dataType:   'json',
-					data    :  {goods_id:goods_id,timestamps:timestamps},
+					data    :  {goods_id:goods_id,timestamps:timestamps,user_id:user_id},
 					 success :   function(res){
 						 alert('111')
 						 }
