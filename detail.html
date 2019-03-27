@@ -16,10 +16,45 @@
 			<h1 class="mui-title">商品详情页</h1>
 		</header>
 		<br/><br/></br>
-    <h3>商品名称</h3><label>苹果X</label>
-	<h3>商品价格</h3><span>9999</span>
-	<h3>购买数量</h3><input type="text"  value="1">
-	<button class="btn btn-success btn-block">点击加入购物车</button>
-</div>
+	<div id="show">
+		<div>
+			<h3>商品名称</h3><label></label>
+			<h3>商品价格</h3><span></span>
+			<h3>商品库存</h3><span></span>
+			<h3>购买数量</h3><input type="text"  value="1">
+			<button class="btn btn-success btn-block">点击加入购物车</button>
+		</div>
+	</div>
 	</body>
+	<script type="text/javascript">
+		$(function(){
+			var goods_id=localStorage.getItem('goods_id');
+			$.ajax({
+				url: 'http://three.52self.cn/goods/details',
+				type:'post',
+				data :{goods_id:goods_id},
+				dataType:'json',
+			    success:function (result) {
+							var _h3='';
+							_h3+="<div>"
+							+"<h3>商品名称</h3><label>"+result.msg.goods_name+"</label>"
+							+"<h3>商品价格</h3><span>"+result.msg.goods_price+"</span>"
+							+"<h3>商品库存</h3><span>"+result.msg.goods_store+"</span>"
+							+"<h3>购买数量</h3><input type='text'  value='1' class='goods_num'>"
+							+"<button class='addcart btn btn-success btn-block'>点击加入购物车</button>"
+							+"</div>";
+							if(result.error==0){
+								$("#show").html(_h3)
+							}else{
+								alert('非法操作')
+							}
+							
+				   },
+			})
+			$(document).on('click','.addcart',function(){
+				
+			})
+		})
+			
+	</script>
 </html>
