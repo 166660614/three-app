@@ -5,15 +5,11 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="css/mui.css" rel="stylesheet" />
-			<script src="js/jquery-1.12.4.min.js"></script>
+			<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 			<script src="js/app.js"></script> 
 			<link href="css/app.css" rel="stylesheet"/>
 	</head>
 	<body>
-		<script src="js/mui.js"></script>
-		<script type="text/javascript">
-			mui.init()
-		</script>
 		<h1>登录</h1>
 	<form>
 			<div class="form-group">
@@ -32,12 +28,13 @@
 </html>
 <script type="text/javascript">
 	$(function(){
-		$('#btn').click.(function(){
-			alert(1);
+		$('#btn').click(function(d){
 			d.preventDefault();
+			//alert('1')
 			var _this=$('this');
-			var user_name=$('#user_name');
-			var user_pwd=$('#user_pwd');
+			var user_name=$('#user_name').val();
+			//console.log(user_name)
+			var user_pwd=$('#user_pwd').val();
 			$.ajax({
 				 url     :   'http://three.52self.cn/user/login',
 				type    :   'post',
@@ -45,14 +42,20 @@
 				data    :  {user_name:user_name,user_pwd:user_pwd},
 				 success :   function(res){
 					if(res.errcode=='4001'){
-						alert('1')
+						alert('登录成功')
+						localStorage.setItem('user_id',res.user_id);
+						
+						//console.log(id)0
+						localStorage.setItem('token',res.token);
+						//console.log(token)
+						localStorage.setItem('user_name',res.user_name);
 						window.location.href="./center.html";
 						}else{
 							alert(res.errmsg)
 						}
-			});
+			}
 			
 		})
-	});
+		})
 	})
 </script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+		<h1><font color="red">个人中心</font></h1>
+		<font color="fuchsia">欢迎<span id="text"></span></font> <br>
+		<a href="./cart.html"><button>购物车</button></a><br>
+		<a href="./goods.html"><button>商品区</button></a><br>
+		<button  id="quit">退出</button>
+		<script src="js/mui.min.js"></script>
+		 <link href="css/mui.min.css" rel="stylesheet"/>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//个人中心
+ $(function(){
+	var user_id=localStorage.getItem('user_id');
+	var user_name=localStorage.getItem('user_name');
+	//console.log(id)
+	$('#text').html(user_name);
+	var token=localStorage.getItem('token');
+	//console.log(token)
+// 	 $.ajax({
+// 	  url     :   '',
+// 	  type    :   'post',
+// 	  dataType:   'json',
+// 		data  :  {user_id:user_id,token:token},
+// 	success   :  function(res){
+// 					if(res.errno!=0){
+// 						alert('信息有误')
+// 					}else{
+// 						alert('欢迎'+user_name+'登录')
+// 						
+// 					}
+// 				}
+// 				
+// 			})	
+			//退出
+			$('#quit').click(function(){
+				localStorage.removeItem('user_id')
+				localStorage.removeItem('token')
+				alert('退出成功') 
+				window.location.href="./index.html";
+			})	
+			
+		})	
+</script>
