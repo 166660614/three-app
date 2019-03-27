@@ -33,3 +33,23 @@
 			</tr>
 	</body>
 </html>
+<script>
+$(function(){
+	
+	 		    $.ajax({
+	 		   
+					type:'post',
+					data :{user_id:user_id},
+					dataType:'json',
+	 		        success:function (res) {
+	 					   console.log(res.errmsg);
+	 				   }
+	 				   
+	 		      
+	 		    })
+	 		})	
+		 })
+
+
+	
+</script>
