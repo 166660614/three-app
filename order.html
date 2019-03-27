@@ -2,24 +2,32 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
-		<title></title>
+		<script src="js/app.js"></script> 
+		<link href="css/mui.min.css" rel="stylesheet"/>
+		<link href="css/app.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<script src="js/mui.min.js"></script>
 	</head>
 	<body>
-		  <table border="1"  class="table table-bordered">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的订单</h1>
+		</header>
+		<br/><br/></br>
+		  <table  class="table table-bordered">
         <thead>
         <td>ID</td><td>订单号</td><td>金额</td><td>下单时间</td><td>操作</td>
         </thead>
-        <tbody>
-        {foreach($deta as $v)}
-            <tr o_id="{{$v['o_id']}}">
-                <td><?php echo $v['o_id']?></td>
-                <td>{{$v['order_sn']}}</td>
-                <td>{{$v['order_amount']}}</td>
-                <td>{{date('Y-m-d H:i:s',$v['reg_time'])}}</td>
-                <td><a class="del_order btn btn-warning " >取消订单1</a><a href="/order/orderdel/{{$v['o_id']}}"><font color="red" class="btn btn-info">取消订单</font></a> <a href="/pay/order/{{$v['o_id']}}" class="btn btn-warning"><font color="#ffd700">支付宝支付</font></a><a href="/weixin/pay/order/{{$v['o_id']}}" class="btn btn-warning"><font color="#006400">微信支付支付</font></a></td>
-            </tr>
-        {/foreach}
+        <tbody>	
+			<tr class="success">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><a href="./order.html" ><button class="btn btn-info ">取消订单</button></a> 	<a href="./order.html" ><button class="btn btn-info btn-block">支付宝支付</button></a> <a href="./order.html" ><button class="btn btn-info ">微信支付</button></a></td>
+			</tr>
         </tbody>
     </table>
 
