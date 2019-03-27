@@ -83,7 +83,11 @@
 					dataType:   'json',
 					data    :  {goods_id:goods_id,timestamps:timestamps,user_id:user_id},
 					 success :   function(res){
-						 alert('111')
+						 if(result.errcode==4001){
+						 	alert('收藏成功')
+						 }else{
+						 	alert('收藏失败')
+						 }
 						 }
 				})
 			})
