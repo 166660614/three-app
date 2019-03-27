@@ -37,9 +37,9 @@
 			    success:function (result) {
 							var _h3='';
 							_h3+="<div>"
-							+"<h3>商品名称</h3><label>"+result.msg.goods_name+"</label>"
-							+"<h3>商品价格</h3><span>"+result.msg.goods_price+"</span>"
-							+"<h3>商品库存</h3><span>"+result.msg.goods_store+"</span>"
+							+"<h3>商品名称</h3><label class='goods_name'>"+result.msg.goods_name+"</label>"
+							+"<h3>商品价格</h3><span class='goods_price'>"+result.msg.goods_price+"</span>"
+							+"<h3>商品库存</h3><span class='goods_store'>"+result.msg.goods_store+"</span>"
 							+"<h3>购买数量</h3><input type='text'  value='1' class='goods_num'>"
 							+"<button class='addcart btn btn-success btn-block'>点击加入购物车</button>"
 							+"</div>";
@@ -52,7 +52,20 @@
 				   },
 			})
 			$(document).on('click','.addcart',function(){
-				
+				var _this=$('this')
+				var goods_name=$('.goods_name').text();
+				//alert(goods_name)
+				var goods_price=$('.goods_price').text();
+				var goods_store=$('.goods_store').text();
+				var goods_num=$('.goods_num').text();
+				$.ajax({
+					url     :   '',
+					type    :   'post',
+					dataType:   'json',
+					data    :  {goods_name:goods_name,goods_price:goods_price,goods_store:goods_store,goods_num:goods_num},
+					 success :   function(res){
+						 alert('111')
+				})
 			})
 		})
 			
