@@ -5,6 +5,9 @@
 		<title></title>
 		<script src="js/mui.min.js"></script>
 		<script src="js/jquery-1.12.4.min.js"></script>
+		<script src="js/app.js"></script> 
+		<link href="css/app.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link href="css/mui.min.css" rel="stylesheet"/>
 		<script type="text/javascript">
 			
@@ -33,9 +36,9 @@
 			        <td></td>
 			        <td></td>
 			        <td></td>
-			        <td>
+			       <!-- <td>
 			            <a>详情</a>
-			        </td>
+			        </td> -->
 			    </tr>
 			</tbody>
 		</table>
@@ -67,7 +70,7 @@
 			}
 		});
 		$('.par').click(function(){
-			alert('111')
+			alert('1112')
 			var _this=$('this');
 			var goods_id=_this.parents('tr').attr('goods_id');
 			localStorage.setItem('goods_id',goods_id);
