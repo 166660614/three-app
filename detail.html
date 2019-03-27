@@ -53,24 +53,33 @@
 							
 				   },
 			})
-			$(document).on('click','.addcart',function(){
+				$(document).on('click','.addcart',function(){
 				var _this=$('this')
-				var goods_name=$('.goods_name').text();
-				//alert(goods_name)
-				var goods_price=$('.goods_price').text();
-				var goods_store=$('.goods_store').text();
-				var goods_num=$('.goods_num').text();
+				var goods_id=localStorage.getItem('goods_id');
+				//alert(goods_id)
+				var user_id=localStorage.getItem('user_id');
+				//alert(user_id)
+// 				var goods_name=$('.goods_name').text();
+// 				//alert(goods_name)
+// 				var goods_price=$('.goods_price').text();
+// 				var goods_store=$('.goods_store').text();
+				var goods_num=$('.goods_num').val();
+				//alert(goods_num)
 				$.ajax({
-					url     :   '',
+					url     :   'http://three.52self.cn/cart/join',
 					type    :   'post',
 					dataType:   'json',
-					data    :  {goods_name:goods_name,goods_price:goods_price,goods_store:goods_store,goods_num:goods_num},
+					data    :  {goods_num:goods_num,goods_id:goods_id,user_id:user_id},
 					 success :   function(res){
-						 alert('111')
-						 }
+						 if(res.error==0){
+							alert('加入购物车成功') 
+							window.location.href="./cart.html";
+						 }else{
+							 alert(res.msg)
+							 }
+						} 
 				})
 			})
-		})
 		$(document).on('click','.addput',function(){
 				var _this=$('this')
 				var timestamps = (new Date()).getTime();
@@ -92,6 +101,6 @@
 						 }
 				})
 			})
-			
+			})
 	</script>
 </html>
