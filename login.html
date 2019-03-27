@@ -34,6 +34,10 @@
 </html>
 <script type="text/javascript">
 	$(function(){
+		var user_id=localStorage.getItem('user_id');
+		if(user_id){
+			window.location.href='./center.html';
+		}
 		$('#btn').click(function(d){
 			d.preventDefault();
 			//alert('1')
