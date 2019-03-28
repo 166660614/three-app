@@ -81,9 +81,6 @@ $(function(){
 						dataType : 'json',
 						data : {user_id:user_id,goods_id:goods_id,cart_id:cart_id},
 						success : function(res){
-
-							if(res.errcode==4001){
-
 							if(res.errcode==0){
 
 								alert('下单成功')
