@@ -35,7 +35,7 @@
 	var token=localStorage.getItem('token');
 	//console.log(token)
 	if(!user_id){
-		alert('请先登录')
+		alert('账号凭证已过期，请重新登录')
 		localStorage.removeItem('user_id');
 		localStorage.removeItem('token')
 		location.href='./login.html';
@@ -51,7 +51,7 @@
 					}else{
 						localStorage.removeItem('user_id');
 						localStorage.removeItem('token')
-						alert('您的登录凭证已过期！');
+						alert('您的账号已在别处登录！');
 						location.href='./login.html';
 					}
 				}
