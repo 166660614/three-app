@@ -51,15 +51,11 @@
 				dataType:   'json',
 				data    :  {user_name:user_name,user_pwd:user_pwd},
 				 success :   function(res){
-					if(res.errcode==0{
-						alert('登录成功')
-						localStorage.setItem('user_id',res.user_id);
-						
-						//console.log(id)0
-						localStorage.setItem('token',res.token);
-						//console.log(token)
-						localStorage.setItem('user_name',res.user_name);
-						window.location.href="./center.html";
+					if(res.errcode==0){
+							alert('登录成功')
+							localStorage.setItem('user_id',res.user_id);
+							localStorage.setItem('token',res.token);
+							window.location.href="./center.html";
 						}else{
 							alert(res.msg)
 						}
