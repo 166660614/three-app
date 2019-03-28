@@ -37,7 +37,7 @@
 				dataType:'json',
 			    success:function (result) {
 							var _h3='';
-							_h3+="<div>"
+							_h3+="<div goods_id="+result.msg.goods_id+">"
 							+"<h3>商品名称</h3><label class='goods_name'>"+result.msg.goods_name+"</label>"
 							+"<h3>商品价格</h3><span class='goods_price'>"+result.msg.goods_price+"</span>"
 							+"<h3>商品库存</h3><span class='goods_store'>"+result.msg.goods_store+"</span>"
@@ -97,7 +97,7 @@
 					var _this=$(this);
 					var timestamps = (new Date()).getTime();
 					var user_id=localStorage.getItem('user_id');
-					var goods_id=localStorage.getItem('goods_id');
+					var goods_id=_this.parents('tr').attr('goods_id');
 					$.ajax({
 						url     :   'http://three.52self.cn/user/dot',
 						type    :   'post',
