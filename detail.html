@@ -97,11 +97,12 @@
 					var _this=$(this);
 					var timestamps = (new Date()).getTime();
 					var user_id=localStorage.getItem('user_id');
+					var goods_id=localStorage.getItem('goods_id');
 					$.ajax({
 						url     :   'http://three.52self.cn/user/dot',
 						type    :   'post',
 						dataType:   'json',
-						data    :  {timestamps:timestamps,user_id:user_id},
+						data    :  {timestamps:timestamps,user_id:user_id,goods_id:goods_id},
 						success :   function(res){
 							//console.log(res.errcode);
 							if(res.errcode==4001){
