@@ -55,21 +55,25 @@
 				   },
 			})
 			$(document).on('click','.addcart',function(){
-				var _this=$('this')
+				var _this=$(this)
 				var goods_name=$('.goods_name').text();
 				var user_id=localStorage.getItem('user_id');
 				//alert(goods_name)
+			var goods_id=_this.parents('div').attr('goods_id')
+		
+				//alert(goods_id)
 				var goods_price=$('.goods_price').text();
 				var goods_store=$('.goods_store').text();
-				var goods_num=$('.goods_num').text();
+				var goods_num=$('.goods_num').val();
 				$.ajax({
 					url     :   'http://three.52self.cn/cart/join',
 					type    :   'post',
 					dataType:   'json',
-					data    :  {goods_name:goods_name,goods_price:goods_price,goods_store:goods_store,goods_num:goods_num,user_id:user_id},
+					data    :  {goods_id:goods_id,goods_name:goods_name,goods_price:goods_price,goods_store:goods_store,goods_num:goods_num,user_id:user_id},
 					 success :   function(res){
 						 if(res.errcode==0){
 							 alert('已加入购物车')
+							 window.location.href="./cart.html";
 						 }else{
 							 alert(res.msg)
 						 }
