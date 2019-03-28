@@ -40,9 +40,10 @@
 	</body>
 </html>
 <script type="text/javascript">
+	var user_id=localStorage.getItem('user_id');
 	mui.ajax({
-		url:"http://three.52self.cn/",
-		data:{},
+		url:"http://three.52self.cn/collect/zrange",
+		data:{user_id:user_id},
 		dataType:'json',//服务器返回json格式数据
 		type:'post',//HTTP请求类型
 		timeout:10000,//超时时间设置为10秒；	              
@@ -51,7 +52,6 @@
 			var _tr= "";
 			for(var i in result['data']){
 				 _tr+="<tr>"
-				 +"<td>"+result[i]['collection_id']+"</td>"
 				 +"<td>"+result[i]['goods_name']+"</td>"
 				 +"<td>"+result[i]['goods_price']+"</td>"
 				 +"<td>"+result[i]['add_time']+"</td>"

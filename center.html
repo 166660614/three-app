@@ -36,6 +36,8 @@
 	//console.log(token)
 	if(!user_id){
 		alert('请先登录')
+		localStorage.removeItem('user_id');
+		localStorage.removeItem('token')
 		location.href='./login.html';
 	}
 	 $.ajax({
@@ -47,6 +49,8 @@
 					if(res.errcode==0){
 						$("#text").text(res.user_name)
 					}else{
+						localStorage.removeItem('user_id');
+						localStorage.removeItem('token')
 						alert('请登录');
 						location.href='./login.html';
 					}
