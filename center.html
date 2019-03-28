@@ -32,26 +32,22 @@
 	//个人中心
  $(function(){
 	var user_id=localStorage.getItem('user_id');
-	var user_name=localStorage.getItem('user_name');
-	//console.log(id)
-	$('#text').html(user_name);
 	var token=localStorage.getItem('token');
 	//console.log(token)
-// 	 $.ajax({
-// 	  url     :   '',
-// 	  type    :   'post',
-// 	  dataType:   'json',
-// 		data  :  {user_id:user_id,token:token},
-// 	success   :  function(res){
-// 					if(res.errno!=0){
-// 						alert('信息有误')
-// 					}else{
-// 						alert('欢迎'+user_name+'登录')
-// 						
-// 					}
-// 				}
-// 				
-// 			})	
+	 $.ajax({
+	  url     :   'http://three.52self.cn/user/center',
+	  type    :   'post',
+	  dataType:   'json',
+		data  :  {user_id:user_id,token:token},
+	success   :  function(res){
+					if(res.errcode=0){
+						$("#text").text(res.user_name)
+					}else{
+						alert(res.msg);
+					}
+				}
+				
+			})	
 			//退出
 			$('#quit').click(function(){
 				localStorage.removeItem('user_id')
