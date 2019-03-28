@@ -81,11 +81,14 @@ $(function(){
 						dataType : 'json',
 						data : {user_id:user_id,goods_id:goods_id,cart_id:cart_id},
 						success : function(res){
-							if(res.errcode==4001){
-								alert('下单成功1')
+							if(res.errcode==0){
+								alert('下单成功')
 								window.location.href="./order.html";
-							}else{
-							alert('下单失败')
+							}else if(res.errcode==4001){
+								alert(res.msg)
+								window.location.href="./login.html";
+							}else if(res.errcode==5001){
+								alert(res.msg)
 							}
 						}
 					})
