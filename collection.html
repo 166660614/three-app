@@ -18,7 +18,6 @@
 		<br><br><br>
 		<table class="table table-striped table-hover table-bordered" width="350px" >
 			<tr>
-				<td>商品id</td>
 				<td>商品名称</td>
 				<td>商品价格</td>
 				<td>收藏时间</td>
@@ -49,12 +48,17 @@
 		timeout:10000,//超时时间设置为10秒；	              
 		success:function(result){
 			//console.log(result);
+			if(result.errcode!=0){
+				alert('您还没有收藏的商品哦！')
+				location.href='./goods.html';
+			}
+			var res=result.msg;
 			var _tr= "";
-			for(var i in result['data']){
+			for(var i in res){
 				 _tr+="<tr>"
-				 +"<td>"+result[i]['goods_name']+"</td>"
-				 +"<td>"+result[i]['goods_price']+"</td>"
-				 +"<td>"+result[i]['add_time']+"</td>"
+				 +"<td>"+res[i]['goods_name']+"</td>"
+				 +"<td>"+res[i]['goods_price']+"</td>"
+				 +"<td>"+res[i]['add_time']+"</td>"
 				 +"<td><input type='button' value='取消收藏' class='del'></td>"
 				 +"</tr>"
 			 }
