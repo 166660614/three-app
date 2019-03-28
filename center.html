@@ -23,7 +23,7 @@
 		<a href="./cart.html" ><button class="btn btn-success btn-block">购物车</button></a>
 		<a href="./goods.html" ><button class="btn btn-primary btn-block">商品区</button></a>
 		<a href="./goods.html" ><button class="btn btn-warning btn-block">我的赞</button></a>
-		<a href="./goods.html" ><button class="btn btn-primary btn-block">我的收藏</button></a>
+		<a href="./collection.html" ><button class="btn btn-primary btn-block">我的收藏</button></a>
 		<a href="./order.html" ><button class="btn btn-success btn-block">我的订单</button></a>
 		<a  id="quit"><button class="btn btn-danger btn-block">退出</button></a>
 	</body>
@@ -34,16 +34,21 @@
 	var user_id=localStorage.getItem('user_id');
 	var token=localStorage.getItem('token');
 	//console.log(token)
+	if(!user_id){
+		alert('请先登录')
+		location.href='./login.html';
+	}
 	 $.ajax({
 	  url     :   'http://three.52self.cn/user/center',
 	  type    :   'post',
 	  dataType:   'json',
 		data  :  {user_id:user_id,token:token},
 	success   :  function(res){
-					if(res.errcode=0){
+					if(res.errcode==0){
 						$("#text").text(res.user_name)
 					}else{
-						alert(res.msg);
+						alert('请登录');
+						location.href='./login.html';
 					}
 				}
 				
