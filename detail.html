@@ -62,12 +62,15 @@
 				var goods_store=$('.goods_store').text();
 				var goods_num=$('.goods_num').text();
 				$.ajax({
-					url     :   '',
+					url     :   'http://three.52self.cn/cart/join',
 					type    :   'post',
 					dataType:   'json',
 					data    :  {goods_name:goods_name,goods_price:goods_price,goods_store:goods_store,goods_num:goods_num},
 					 success :   function(res){
-						 alert('111')
+						 if(res.errcode==0){
+							 alert('已加入购物车')
+						 }else{
+							 alert('res.msg')
 						 }
 				})
 			})
@@ -104,12 +107,7 @@
 						dataType:   'json',
 						data    :  {timestamps:timestamps,user_id:user_id,goods_id:goods_id},
 						success :   function(res){
-							//console.log(res.errcode);
-<<<<<<< HEAD
 							if(res.errcode==0){
-=======
-							if(res.errcode=0){
->>>>>>> zan
 									alert('点赞成功')
 							}else{
 									alert('你已经点过了')
