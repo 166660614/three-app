@@ -97,7 +97,7 @@
 					var _this=$(this);
 					var timestamps = (new Date()).getTime();
 					var user_id=localStorage.getItem('user_id');
-					var goods_id=_this.parents('tr').attr('goods_id');
+					var goods_id=_this.parents('tr').attr('goods_id');	
 					$.ajax({
 						url     :   'http://three.52self.cn/user/dot',
 						type    :   'post',
