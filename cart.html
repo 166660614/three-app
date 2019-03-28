@@ -53,11 +53,11 @@ $(function(){
 	 		        success:function (result) {
 	 					   var _tr= "";
 	 					   		for(var i in result){
-	 					   		   _tr+="<tr goods_id='"+result[i]["goods_id"]+"' cart_id='"+result[i]["cart_id"]+"'>"
+	 					   		   _tr+="<tr goods_id='"+result[i]["goods_id"]+"' cart_id='"+result[i]["cart_id"]+"' goods_num='"+result[i]["goods_num"]+"'>" 
 	 					   			 +"<td>"+result[i]['cart_id']+"</td>"
 	 					   			 +"<td>"+result[i]['goods_name']+"</td>"
 	 					   			 +"<td>"+result[i]['goods_num']+"</td>"
-	 					   			 +"<td>"+result[i]['goods_price']+"</td>"
+	 					   			 +"<td>"+result[i]['goods_price']*result[i]['goods_num']+"</td>"
 									 +"<td>"+result[i]['add_time']+"</td>"
 	 					   			 +"<td><a class='order'>下单</a></td>"
 	 					   		   +"</tr>"
@@ -73,13 +73,14 @@ $(function(){
 
 					var goods_id=_this.parents('tr').attr('goods_id');
 					//alert(goods_id)
-					var cart_id=_this.parents('tr').attr('cart_id')
-					//alert(cart_id);
+					var cart_id=_this.parents('tr').attr('cart_id');
+					var goods_num=_this.parents('tr').attr('goods_num');
+					//alert(goods_num);
 					$.ajax({
 						url : 'http://three.52self.cn/order/add',
 						type : 'post',
 						dataType : 'json',
-						data : {user_id:user_id,goods_id:goods_id,cart_id:cart_id},
+						data : {user_id:user_id,goods_id:goods_id,cart_id:cart_id,goods_num:goods_num},
 						success : function(res){
 							if(res.errcode==0){
 								alert('下单成功')
