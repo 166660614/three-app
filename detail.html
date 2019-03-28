@@ -29,7 +29,8 @@
 	</body>
 	<script type="text/javascript">
 		$(function(){
-			var goods_id=localStorage.getItem('goods_id');
+			 goods_id=localStorage.getItem('goods_id');
+			
 			$.ajax({
 				url: 'http://three.52self.cn/goods/details',
 				type:'post',
@@ -38,10 +39,12 @@
 			    success:function (result) {
 							var _h3='';
 							_h3+="<div goods_id="+result.msg.goods_id+">"
-							+"<h3>商品名称</h3><label class='goods_name'>"+result.msg.goods_name+"</label>"
-							+"<h3>商品价格</h3><span class='goods_price'>"+result.msg.goods_price+"</span>"
-							+"<h3>商品库存</h3><span class='goods_store'>"+result.msg.goods_store+"</span>"
-							+"<h3>购买数量</h3><input type='text'  value='1' class='goods_num'>"
+							+"<h3>商品名称：<label class='goods_name'>"+result.msg.goods_name+"</label></h3>"
+							+"<h3>商品图片：<img src='http://img4.imgtn.bdimg.com/it/u=98896170,3702523732&fm=26&gp=0.jpg' width='100px' height=100px'><h3/>"
+							+"<h3>商品价格：<span class='goods_price'>"+result.msg.goods_price+"</span></h3>"
+							+"<h3>商品库存：<span class='goods_store'>"+result.msg.goods_store+"</span></h3>"
+							+"<h3>购买数量：<input type='text'  value='1' class='goods_num'></h3>"
+							+"<h3>访问量：<span class='goods_sal' style='color:red'>"+result.salenum+"</span></h3>"
 							+"<button class='addcart btn btn-success btn-block'>点击加入购物车</button>"
 							+"<button class='addput btn btn-success btn-block'>加入收藏</button>"
 							+"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class='dot btn-info'>点赞</button>"
@@ -54,6 +57,8 @@
 							
 				   },
 			})
+			
+			
 			$(document).on('click','.addcart',function(){
 				var _this=$(this)
 				var goods_name=$('.goods_name').text();
@@ -121,6 +126,7 @@
 						}
 					})
 				})
+				
 			})
 	</script>
 </html>

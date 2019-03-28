@@ -55,7 +55,7 @@
 						 +"<td>"+result[i]['goods_name']+"</td>"
 						 +"<td>"+result[i]['goods_price']+"</td>"
 						 +"<td>"+result[i]['goods_store']+"</td>"
-						 +"<td>"+new Date(result[i]['add_time']).toLocaleDateString()+"</td>"
+						 +"<td>"+result[i]['add_time']+"</td>"
 						 +"<td><input type='button' value='详情' class='detail'></td>"
 						 +"</tr>"
 				   }
@@ -71,15 +71,18 @@
 			//	var msg=localStorage.getItem('msg',msg);
 				
 				var goods_id=_this.parents('tr').attr('goods_id')
+				//alert(goods_id);
 				
-				
+				localStorage.setItem('goods_id',goods_id);
 				$.ajax({
 					url :'http://three.52self.cn/goods/salenum',
 					type: 'post',
 					dataType : 'json',
 					data : {goods_id:goods_id},
 					success:function(res){
+						//alert(res)
 						if(res.errcode==0){
+							
 							window.location.href="./detail.html";
 						}
 					
