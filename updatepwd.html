@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-1.12.4.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet"/>
+		<script src="js/app.js"></script> 
+		<link href="css/app.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="mui-title">修改密码</h1>
+		</header>
+		<br><br><br>
+		<form>
+			<div class="form-group">
+				<label for="exampleInputEmail1">账号</label>
+				<input type="text" class="form-control" id="uname">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">原密码</label>
+				<input type="password" class="form-control" id="upwd" placeholder="请输入原密码">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">密码</label>
+				<input type="password" class="form-control" id="upwd1" placeholder="请输入新密码">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">确认密码</label>
+				<input type="password" class="form-control" id="upwd2" placeholder="请再输入新密码">
+			</div>
+			<button type="button" class="btn btn-info " id="btn">修改密码</button><br/>
+		</form>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function(){
+		var user_id=localStorage.getItem('user_id');
+		// alert(user_id);
+		$.ajax({
+			url     :   'http://three.52self.cn/user/pwd',
+			type    :   'post',
+			dataType:   'json',
+			data  	:  {user_id:user_id},
+			success : 
+				function(res){
+				if(res.errcode==0){
+					$("#uname").val(res.uname);
+				}
+			}
+		})
+		$('#btn').click(function(d){
+			d.preventDefault();
+			var _this=$('this');
+			var upwd=$('#upwd').val();
+			// alert(upwd);
+			var upwd1=$('#upwd1').val();
+			// alert(upwd1)
+			var upwd2=$('#upwd2').val();
+			// alert(upwd2)
+			$.ajax({
+				 url    :   'http://three.52self.cn/user/pwd1',
+				type    :   'post',
+				dataType:   'json',
+				data    :  {upwd:upwd,upwd1:upwd1,upwd2:upwd2,user_id:user_id},
+				success :   
+					function(res){
+					if(res.errcode==0){
+						alert('修改成功，请重新登录')
+						window.location.href="./login.html";
+						localStorage.removeItem('user_id');
+						localStorage.removeItem('token');
+					}else{
+						alert(res.msg)
+					}
+				}
+			})
+		})
+	})
+</script>
