@@ -19,6 +19,7 @@
 		<div id="show">
 		<div>
 			<h3>用户名称</h3><label></label>
+			<h3>用户账号</h3><label></label>
 			<button class="btn btn-success btn-block">添加</button>
 		</div>
 	</div>
@@ -27,17 +28,17 @@
 </html>
 <script type="text/javascript">
 	$(function(){
-		 user_id=localStorage.getItem('user_id');	
-		 friend_id=localStorage.getItem('friend_id');		 
+		 user_id=localStorage.getItem('user_id');
 		$.ajax({
-			url: 'http://three.52self.cn/',
+			url: 'http://three.52self.cn/user/friends',
 			type:'post',
-			data :{user_id:user_id,friends_id:friends_id},
+			data :{user_id:user_id},
 			dataType:'json',
 		    success:function (result) {
 						var _h3='';
 						_h3+="<div user_id="+result.msg.user_id+">"
 						+"<h3>用户名称：<label class='user_name'>"+result.msg.user_name+"</label></h3>"
+						+"<h3>用户账号：<label class='user_account'>"+result.msg.user_account+"</label></h3>"
 						+"<button class='friend btn btn-success btn-block'>添加</button>"
 						+"</div>";
 						if(result.error==0){
