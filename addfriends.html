@@ -28,23 +28,24 @@
 </html>
 <script type="text/javascript">
 	$(function(){
-		 user_id=localStorage.getItem('user_id');
+		 var friends_id=localStorage.getItem('friends_id');
 		$.ajax({
 			url: 'http://three.52self.cn/user/friends',
 			type:'post',
-			data :{user_id:user_id},
+			data :{user_id:friends_id},
 			dataType:'json',
 		    success:function (result) {
 						var _h3='';
-						_h3+="<div user_id="+result.user_id+">"
-						+"<h3>用户名称：<label class='user_name'>"+result.user_name+"</label></h3>"
-						+"<h3>用户账号：<label class='user_account'>"+result.user_account+"</label></h3>"
-						+"<button class='friend btn btn-success btn-block'>添加</button>"
+						res=result.msg
+						_h3+="<div user_account="+res['user_account']+">"
+						+"<h3>用户名称：<label class='user_name'>"+res['user_name']+"</label></h3>"
+						+"<h3>用户账号：<label class='user_account'>"+res['user_account']+"</label></h3>"
+						+"<button class='friend btn btn-success btn-block'>添加好友</button>"
 						+"</div>";
-						if(result.error==0){
+						if(result.errcode==0){
 							$("#show").html(_h3)
 						}else{
-							alert('非法操作')
+							alert(result.msg)
 						}
 						
 			   },
@@ -52,13 +53,14 @@
 				$(document).on('click','.friend',function(){
 				var _this=$(this)
 				var user_name=$('.user_name').text();
-				var friend_id=localStorage.getItem('friend_id');
-				var user_id=_this.parents('div').attr('user_id')
+				var friend_account=$('.user_account').text();
+				var friends_id=localStorage.getItem('friends_id');
+				var user_id=localStorage.getItem('user_id');
 				$.ajax({
-					url     :   'http://three.52self.cn/',
+					url     :   'http://three.52self.cn/friend/add',
 					type    :   'post',
 					dataType:   'json',
-					data    :  {user_id:user_id,friend_id:friend_id,user_name:user_name},
+					data    :  {user_id:user_id,friend_id:friends_id,user_name:user_name,friend_account:friend_account},
 					 success :   function(res){
 						 if(res.errcode==0){
 							 alert('添加成功')
