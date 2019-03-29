@@ -46,17 +46,41 @@
 			success : function(result){
 				var _tr="";
 				for(var i in result ){
-					_tr+="<tr>"
+					_tr+="<tr order_id='"+result[i]['order_id']+"'>"
 					+"<td>"+result[i]['order_num']+"</td>"
 					+"<td>"+result[i]['goods_name']+"</td>"
 					+"<td>"+result[i]['goods_price']+"</td>"
 					+"<td>"+result[i]['add_time']+"</td>"
-					+"<td><button class='btn btn-info'>微信支付</button><button class='btn btn-info'>支付宝支付</button><button class='btn btn-info'>取消订单</button></td>"
+					+"<td><button class='btn btn-info'>微信支付</button><button class='btn btn-info'>支付宝支付</button><button class='del btn btn-info'>取消订单</button></td>"
 					+"</tr>"
 				}
 				$('#show').html(_tr)
 	
 			}
 		})
+			$(document).on('click','.del',function(){
+			var _this=$(this);
+		//	var msg=localStorage.getItem('msg',msg);
+			
+			var order_id=_this.parents('tr').attr('order_id')
+			alert(order_id);
+			
+			localStorage.setItem('order_id',order_id);
+			$.ajax({
+				url :'http://three.52self.cn/goods/salenum',
+				type: 'post',
+				dataType : 'json',
+				data : {order_id:order_id},
+				success:function(res){
+					//alert(res)
+					if(res.errcode==0){
+						
+						//window.location.href="./detail.html";
+					}
+				
+				}
+				
+			})
+			})
 	})
 </script>
