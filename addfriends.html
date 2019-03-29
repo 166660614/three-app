@@ -36,9 +36,9 @@
 			dataType:'json',
 		    success:function (result) {
 						var _h3='';
-						_h3+="<div user_id="+result.msg.user_id+">"
-						+"<h3>用户名称：<label class='user_name'>"+result.msg.user_name+"</label></h3>"
-						+"<h3>用户账号：<label class='user_account'>"+result.msg.user_account+"</label></h3>"
+						_h3+="<div user_id="+result.user_id+">"
+						+"<h3>用户名称：<label class='user_name'>"+result.user_name+"</label></h3>"
+						+"<h3>用户账号：<label class='user_account'>"+result.user_account+"</label></h3>"
 						+"<button class='friend btn btn-success btn-block'>添加</button>"
 						+"</div>";
 						if(result.error==0){
@@ -68,5 +68,6 @@
 						 }
 				}
 			})
+		})
 		})
 </script>
