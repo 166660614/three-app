@@ -56,6 +56,8 @@
 		$('#btn').click(function(d){
 			d.preventDefault();
 			var _this=$('this');
+			var upwd=$('#upwd').val();
+			// alert(upwd);
 			var upwd1=$('#upwd1').val();
 			// alert(upwd1)
 			var upwd2=$('#upwd2').val();
@@ -64,7 +66,7 @@
 				 url    :   'http://three.52self.cn/user/pwd1',
 				type    :   'post',
 				dataType:   'json',
-				data    :  {upwd1:upwd1,upwd2:upwd2,user_id:user_id},
+				data    :  {upwd:upwd,upwd1:upwd1,upwd2:upwd2,user_id:user_id},
 				success :   
 					function(res){
 					if(res.errcode==0){
