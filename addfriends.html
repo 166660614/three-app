@@ -37,9 +37,9 @@
 		    success:function (result) {
 						var _h3='';
 						res=result.msg
-						_h3+="<div user_account="+res['user_account']+">"
+						_h3+="<div user_account="+res['user_tel']+">"
 						+"<h3>用户名称：<label class='user_name'>"+res['user_name']+"</label></h3>"
-						+"<h3>用户账号：<label class='user_account'>"+res['user_account']+"</label></h3>"
+						+"<h3>用户账号：<label class='user_account'>"+res['user_tel']+"</label></h3>"
 						+"<button class='friend btn btn-success btn-block'>添加好友</button>"
 						+"</div>";
 						if(result.errcode==0){
