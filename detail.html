@@ -26,6 +26,11 @@
 			<button class="btn btn-success btn-block">加入收藏</button>
 		</div>
 	</div>
+	<div id='people'>
+		<span>
+			<h3 id='brower'>点击查看浏览用户</h3>
+		</span>
+	</div>
 	</body>
 	<script type="text/javascript">
 		$(function(){
@@ -48,7 +53,7 @@
 							+"<button class='addcart btn btn-success btn-block'>点击加入购物车</button>"
 							+"<button class='addput btn btn-success btn-block'>加入收藏</button>"
 							+"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class='dot btn-info'>点赞</button>"
-							+"</div>";
+							+"</div><br/>";
 							if(result.error==0){
 								$("#show").html(_h3)
 							}else{
@@ -134,7 +139,36 @@
 						}
 					})
 				})
-				
+				$(document).on('click','#brower',function(){
+					var _this=$(this);
+					var user_id=localStorage.getItem('user_id');
+					var goods_id=localStorage.getItem('goods_id');
+					$.ajax({
+						url     :   'http://three.52self.cn/goods/people',
+						type    :   'post',
+						dataType:   'json',
+						data    :  {user_id:user_id,goods_id:goods_id},
+						success :   function(res){
+							var msg=res.msg;
+							var _h3='';
+							for(var i in msg){
+								_h3+="<div>"
+								+"<h4 friends_id="+msg[i]['user_id']+" class='uid'>浏览用户："+msg[i]['user_account']+"<button>+</button></h4>"
+								+"</div>";
+								//_h3
+							}
+							$("#people").html(_h3);
+							//alert(_tr);
+						}
+					})
+				})
+				$(document).on('click','.uid',function(){
+					var _this=$(this);
+					var friends_id=_this.attr('friends_id');
+					//alert(friends_id);
+					localStorage.setItem('friends_id',friends_id);
+					location.href='./addfriends.html';
+				})
 			})
 	</script>
 </html>
