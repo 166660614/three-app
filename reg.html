@@ -21,21 +21,25 @@
 		<a  class="btn btn-info" href="./goods.html">购物</a>
 	<form><br/>
 			<div class="form-group">
-				<label for="exampleInputEmail1">账号</label>
-				<input type="text" class="form-control" id="uname" placeholder="请输入账号">
+				<label for="exampleInputName">用户名</label>
+				<input type="text" class="form-control" id="uname" placeholder="汉字最多3位,英文字母及数字最多10位">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail">邮箱</label>
+				<input type="text" class="form-control" id="uemail" placeholder="邮箱格式必须包含@">
+			</div>
+			<div class="form-group">
+			 	<label for="exampleInputTel">手机号</label>
+			 	<input type="text" class="form-control" id="utel" placeholder="手机号必须为11位纯数字">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">密码</label>
-				<input type="password" class="form-control" id="upwd" placeholder="请输入密码">
+				<input type="password" class="form-control" id="upwd" placeholder="密码不能过于简单">
 			 </div>
-			 <div class="form-group">
+			<div class="form-group">
 			 	<label for="exampleInputPassword1">确认密码</label>
-			 	<input type="password" class="form-control" id="upwd2" placeholder="请再输入密码">
-			  </div>
-			  <div class="form-group">
-			  	<label for="exampleInputPassword1">邮箱</label>
-			  	<input type="text" class="form-control" id="uemail" placeholder="请输入合法的邮箱">
-			   </div>
+			 	<input type="password" class="form-control" id="upwd2" placeholder="确认密码和密码需保持一致">
+			 </div>
 			<button type="button" class="btn btn-success btn-block" id="btn">注册</button><br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -50,19 +54,19 @@
 		$('#btn').click(function(d){
 			d.preventDefault();
 			//alert('1')
-			var _this=$('this');
 			var uname=$('#uname').val();
 			//console.log(uname)
 			var upwd=$('#upwd').val();
 			//console.log(upwd)
 			var upwd2=$('#upwd2').val();
 			var uemail=$('#uemail').val();
+			var utel=$('#utel').val();
 			//console.log(uemail)
 			$.ajax({
 				 url     :   'http://three.52self.cn/user/register',
 				type    :   'post',
 				dataType:   'json',
-				data    :  {uname:uname,upwd:upwd,upwd2:upwd2,uemail:uemail},
+				data    :  {uname:uname,upwd:upwd,upwd2:upwd2,uemail:uemail,utel:utel},
 				 success :   function(res){
 					if(res.errcode==0){
 						alert('注册成功')
